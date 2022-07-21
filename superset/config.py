@@ -157,9 +157,9 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = "\2\1thisismyscretkey\1\2\\e\\y\\y\\h"
 
 # The SQLAlchemy connection string.
-SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(DATA_DIR, "superset.db")
+#SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(DATA_DIR, "superset.db")
 # SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
-# SQLALCHEMY_DATABASE_URI = 'postgresql://root:password@localhost/myapp'
+SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:pharma_neuriot@superset1-4.cluster-cvktwfjx2scp.us-east-2.rds.amazonaws.com/superset'
 
 # In order to hook up a custom password store for all SQLACHEMY connections
 # implement a function that takes a single argument of type 'sqla.engine.url',
@@ -186,7 +186,7 @@ SQLALCHEMY_ENCRYPTED_FIELD_TYPE_ADAPTER = (  # pylint: disable=invalid-name
 QUERY_SEARCH_LIMIT = 1000
 
 # Flask-WTF flag for CSRF
-WTF_CSRF_ENABLED = True
+WTF_CSRF_ENABLED = False
 
 # Add endpoints that need to be exempt from CSRF protection
 WTF_CSRF_EXEMPT_LIST = ["superset.views.core.log", "superset.charts.api.data"]
@@ -268,7 +268,7 @@ AUTH_TYPE = AUTH_DB
 # AUTH_ROLE_ADMIN = 'Admin'
 
 # Uncomment to setup Public role name, no authentication needed
-# AUTH_ROLE_PUBLIC = 'Public'
+AUTH_ROLE_PUBLIC = 'Public'
 
 # Will allow user self registration
 # AUTH_USER_REGISTRATION = True
@@ -290,7 +290,7 @@ AUTH_TYPE = AUTH_DB
 # Grant public role the same set of permissions as for a selected builtin role.
 # This is useful if one wants to enable anonymous users to view
 # dashboards. Explicit grant on specific datasets is still required.
-PUBLIC_ROLE_LIKE: Optional[str] = None
+PUBLIC_ROLE_LIKE: Optional[str] = "GAMMA"
 
 # ---------------------------------------------------
 # Babel config for translations
@@ -671,7 +671,7 @@ BACKUP_COUNT = 30
 QUERY_LOGGER = None
 
 # Set this API key to enable Mapbox visualizations
-MAPBOX_API_KEY = os.environ.get("MAPBOX_API_KEY", "")
+MAPBOX_API_KEY = os.environ.get("MAPBOX_API_KEY", "pk.eyJ1Ijoia2FseWFubmV1cmlvdCIsImEiOiJja3llYW13aXkwY2lsMm9xcDA3dTR1NnllIn0.61iCqpn2zw285ZCOjiQlaA")
 
 # Maximum number of rows returned for any analytical database query
 SQL_MAX_ROW = 100000
